@@ -1,0 +1,13 @@
+storage:
+  container_name: tahoe-lafs-storage
+  image: pataquets/tahoe-lafs-storage
+#  build: .
+  restart: unless-stopped
+  ports:
+    - 3456:3456
+    - 127.0.0.1::3457
+    - 127.0.0.1:3458:3457
+  volumes:
+#    - ./private/:/data/private/:rw
+    - /data/tahoe-node/storage/:/tahoe-node/storage/:rw
+    - /data/tahoe-node/private/:/tahoe-node/private/:rw
